@@ -1,7 +1,7 @@
 {
     "name": "nativescript-pubnub",
     "version": "1.0.0",
-    "description": "Your awesome NativeScript plugin.",
+    "description": "PubNub SDK for NativeScript",
     "main": "pubnub",
     "typings": "index.d.ts",
     "nativescript": {
@@ -34,8 +34,8 @@
         "iOS"
     ],
     "author": {
-        "name": "Your Name",
-        "email": "youremail@yourdomain.com"
+        "name": "Ricky Brown",
+        "email": "ricky@brilliantlabs.co"
     },
     "bugs": {
         "url": "https://github.com/rickybrown/nativescript-pubnub/issues"
