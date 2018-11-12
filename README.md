@@ -9,16 +9,14 @@ This plugin is allows you to use the [PubNub Objective-C SDK](https://www.pubnub
 Describe your plugin installation steps. Ideally it would be something like:
 
 ```javascript
-tns plugin add <your-plugin-name>
+tns plugin add ns-pubnub
 ```
 
 ## Usage
 
-Describe any usage specifics for your plugin. Give examples for Android, iOS, Angular if needed. See [nativescript-drop-down](https://www.npmjs.com/package/nativescript-drop-down) for example.
-
 ```javascript
 // import
-import { Pubnub, PubnubConfig } from 'nativescript-pubnub';
+import { Pubnub, PubnubConfig } from 'ns-pubnub';
 
 // configure
 const pubnubConfig: PubnubConfig = {
