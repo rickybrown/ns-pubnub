@@ -1,6 +1,6 @@
 {
     "name": "ns-pubnub",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "description": "PubNub SDK for NativeScript",
     "main": "pubnub",
     "typings": "index.d.ts",

@@ -6,8 +6,6 @@ This plugin is allows you to use the [PubNub Objective-C SDK](https://www.pubnub
 
 ## Installation
 
-Describe your plugin installation steps. Ideally it would be something like:
-
 ```javascript
 tns plugin add ns-pubnub
 ```
@@ -16,16 +14,17 @@ tns plugin add ns-pubnub
 
 ```javascript
 // import
-import { Pubnub, PubnubConfig } from 'ns-pubnub';
+import { Pubnub, PubnubConfig, PubnubOptions } from 'ns-pubnub';
 
 // configure
 const pubnubConfig: PubnubConfig = {
   publishKey: 'demo',
-  subscribeKey: 'demo',
-  options: {
-    cipherKey: '12345',
-    suppressLeaveEvents: false
-  }
+  subscribeKey: 'demo'
+}
+
+const pubnubOptions: PubnubOptions = {
+  cipherKey: 'a12345',
+  suppressLeaveEvents: false
 }
 
 let pubnub = new Pubnub(pubnubConfig);
