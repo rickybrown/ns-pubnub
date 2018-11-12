@@ -1,5 +1,5 @@
 import { Observable } from 'tns-core-modules/data/observable';
-import { Common, PubnubConfig } from './pubnub.common';
+import { Common, PubnubConfig, PubnubOptions } from './pubnub.common';
 import * as utils from "tns-core-modules/utils/utils";
 
 declare var PubNub, PNConfiguration, PNObjectEventListener;
@@ -59,16 +59,14 @@ export class Pubnub extends Common {
   private _client:   any;
   private _delegate: any;
 
-  constructor(args: PubnubConfig) {
+  constructor(config: PubnubConfig, options: PubnubOptions) {
     super()
-
-    const config = args;
 
     this._config = PNConfiguration.configurationWithPublishKeySubscribeKey(config.publishKey, config.subscribeKey);
 
-    if(config.options) {
-      for(let option of Object.keys(config.options)) {
-        this._config[option] = config.options[option];
+    if(options) {
+      for(let option of Object.keys(options)) {
+        this._config[option] = options[option];
       }
     }
     this._client   = PubNub.clientWithConfiguration(this._config);
@@ -78,12 +76,12 @@ export class Pubnub extends Common {
   }
 
   // subsribe to channels
-  public subscribe(channels, withPresence): any {
+  public subscribe(channels, withPresence) {
     this._client.subscribeToChannelsWithPresence(channels, withPresence);
   }
 
   // Publish message and get status
-  public publish(channel, msgObj, callback): any {
+  public publish(channel, msgObj, callback) {
     this._client.publishToChannelWithCompletion(msgObj, channel, (status) => {
       callback(status.data)
     });
