@@ -3,5 +3,6 @@
   <StackLayout class="p-20">
     <Label text="{{ message }}" class="t-20 text-center c-black" textWrap="true"/>
     <Button class="btn btn-primary" text="publish message" tap="{{sendMessage}}"></Button>
+    <Button class="btn btn-primary" text="unsubscribe" tap="{{unsubscribe}}"></Button>
   </StackLayout>
 </Page>

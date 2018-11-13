@@ -2,8 +2,8 @@ import { Observable } from 'tns-core-modules/data/observable';
 import { Pubnub, PubnubConfig, PubnubOptions } from 'ns-pubnub';
 
 const pubnubConfig: PubnubConfig = {
-  publishKey: 'pub-c-9e361b88-6346-472f-abef-932548c3aca8',
-  subscribeKey: 'sub-c-852e781c-e24a-11e8-9c1c-529fcc5a7500',
+  publishKey: 'demo',
+  subscribeKey: 'demo',
 }
 
 const pubnubOptions: PubnubOptions = {
@@ -40,6 +40,10 @@ export class HelloWorldModel extends Observable {
     pubnub.publish(channel, this.message, (status) => {
       // conosle.log(status.information)
     })
+  }
+
+  public unsubscribe() {
+    pubnub.unsubscribe([channel]);
   }
 
 

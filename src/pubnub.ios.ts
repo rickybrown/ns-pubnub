@@ -76,8 +76,28 @@ export class Pubnub extends Common {
   }
 
   // subsribe to channels
-  public subscribe(channels, withPresence) {
+  public subscribe(channels: string[], withPresence: boolean) {
     this._client.subscribeToChannelsWithPresence(channels, withPresence);
+  }
+
+  // subsribe to channel groups
+  public subscribeToChannelGroups(groups: string[], shouldObservePresence: boolean) {
+    this._client.subscribeToChannelGroupsWithPresence(groups, shouldObservePresence);
+  }
+
+  // unsubscribe from channels
+  public unsubscribe(channels: string[], withPresence: boolean) {
+    this._client.unsubscribeFromChannelsWithPresence(channels, withPresence);
+  }
+
+  // unsubscribe from all channels
+  public unsubscribeFromAll() {
+    this._client.unsubscribeFromAll();
+  }
+
+  // unsubscribe from channel groups
+  public unsubscribeFromChannelGroups(groups: string[], withPresence: boolean) {
+    this._client.unsubscribeFromChannelGroupsWithPresence(groups, withPresence);
   }
 
   // Publish message and get status

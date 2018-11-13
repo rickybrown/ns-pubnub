@@ -31,6 +31,10 @@ export declare class Pubnub extends Common {
     private _client;
     private _delegate;
     constructor(config: PubnubConfig, options: PubnubOptions);
-    subscribe(channels: any, withPresence: any): void;
+    subscribe(channels: string[], withPresence: boolean): void;
+    subscribeToChannelGroups(groups: string[], shouldObservePresence: boolean): void;
+    unsubscribe(channels: string[], withPresence: boolean): void;
+    unsubscribeFromAll(): void;
+    unsubscribeFromChannelGroups(groups: string[], withPresence: boolean): void;
     publish(channel: any, msgObj: any, callback: any): void;
 }

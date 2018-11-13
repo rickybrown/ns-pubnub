@@ -27,7 +27,7 @@ const pubnubOptions: PubnubOptions = {
   suppressLeaveEvents: false
 }
 
-let pubnub = new Pubnub(pubnubConfig);
+let pubnub = new Pubnub(pubnubConfig, pubnubOptions);
 
 // subscribe
 pubnub.subscribe(['my_channel'], true)
