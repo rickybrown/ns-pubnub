@@ -30,10 +30,12 @@ const pubnubOptions: PubnubOptions = {
 let pubnub = new Pubnub(pubnubConfig, pubnubOptions);
 
 // subscribe
-pubnub.subscribe(['my_channel'], true)
+pubnub.subscribe(channels: string[], withPresence: boolean)
+
+pubnub.subscribeToChannelGroups(groups: string[], shouldObservePresence: boolean)
 
 // publish message
-pubnub.publish('my_channel', this.message, (status) => {
+pubnub.publish('my_channel', "message", (status) => {
   conosle.log(status.information)
 })
 
@@ -47,6 +49,13 @@ pubnub.on('receivePresenceEvent', (data) => {
 pubnub.on('receiveStatus', (data) => {
   console.log(data)
 })
+
+// unsubscribe
+pubnub.unsubscribe(channels: string[], withPresence: boolean)
+
+pubnub.unsubscribeFromChannelGroups(groups: string[], withPresence: boolean)
+
+pubnub.unsubscribeFromAll()
 ```
 
 ## API
