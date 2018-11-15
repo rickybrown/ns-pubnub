@@ -37,13 +37,17 @@ export class PubnubDelegate extends NSObject {
   }
 
   private transformToJSON(obj) {
-    return JSON.parse(obj.toString()
+    if(!obj) {
+      return {};
+    } else {
+      return JSON.parse(obj.toString()
       .replace(/["']/g, '')
       .replace(/([^\s].*) = ([^;{}]*)[;]/gi, '\"$1\": \"$2\",')
       .replace(/([^\s].*) =\s+{/gi, '\"$1\": {')
       .replace('};', '}')
       .replace('}', '},')
       .replace(/\,(?!\s*?[\{\[\"\'\w])/gi, ''));
+    }
   }
 }
 

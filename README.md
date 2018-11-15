@@ -58,7 +58,7 @@ pubnub.unsubscribeFromChannelGroups(groups: string[], withPresence: boolean)
 pubnub.unsubscribeFromAll()
 ```
 
-## API
+## Options (PubnubOptions)
 
 | Property | Type | Default | Description |
 | --- | --- | --- | --- |
