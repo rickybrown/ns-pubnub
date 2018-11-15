@@ -46,7 +46,8 @@ export class PubnubDelegate extends NSObject {
       .replace(/([^\s].*) =\s+{/gi, '\"$1\": {')
       .replace('};', '}')
       .replace('}', '},')
-      .replace(/\,(?!\s*?[\{\[\"\'\w])/gi, ''));
+      .replace(/\,(?!\s*?[\{\[\"\'\w])/gi, '')
+      .replace(/\"(-?\d+(\.\d+)?)\"/g, '$1'));
     }
   }
 }

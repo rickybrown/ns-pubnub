@@ -38,7 +38,7 @@ export class HelloWorldModel extends Observable {
 
   public sendMessage() {
     pubnub.publish(channel, this.message, (status) => {
-      conosle.log(status.information)
+      console.log(status.information)
     })
   }
 
