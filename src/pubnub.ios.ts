@@ -15,43 +15,36 @@ export class PubnubDelegate extends NSObject {
     return delegate;
   }
 
-  public clientDidReceiveMessage(client, msgObj) {
-    let data: any = {
-      channel:   msgObj.data.channel,
-      message:   msgObj.data.message,
-      uuid:      msgObj.uuid,
-      timetoken: msgObj.data.timetoken
-    }
+  public clientDidReceiveMessage(client, message) {
     this._owner.get().notify({
-      eventName: 'receiveMessage', object: data
+      eventName: 'receiveMessage',
+      object: this.transformToJSON(message.data)
     });
   }
 
   public clientDidReceivePresenceEvent(client, event) {
-    let data: any = {
-      channel:       event.data.channel,
-      occupancy:     event.data.presence.occupancy,
-      uuid:          event.data.presence.uuid,
-      timetoken:     event.data.presence.timetoken,
-      presenceEvent: event.data.presenceEvent,
-      statusCode:    event.data.statusCode
-    }
     this._owner.get().notify({
-      eventName: 'receivePresenceEvent', object: data
+      eventName: 'receivePresenceEvent',
+      object: this.transformToJSON(event.data)
     });
   }
 
   public clientDidReceiveStatus(client, status) {
-    let data: any = {
-      currentTimetoken: status.currentTimetoken,
-      statusCode:       status.statusCode,
-      timetoken:        status.data.timetoken
-    }
     this._owner.get().notify({
-      eventName: 'receiveStatus', object: data
+      eventName: 'receiveStatus',
+      object: this.transformToJSON(status.data)
     });
   }
 
+  private transformToJSON(obj) {
+    return JSON.parse(obj.toString()
+      .replace(/["']/g, '')
+      .replace(/([^\s].*) = ([^;{}]*)[;]/gi, '\"$1\": \"$2\",')
+      .replace(/([^\s].*) =\s+{/gi, '\"$1\": {')
+      .replace('};', '}')
+      .replace('}', '},')
+      .replace(/\,(?!\s*?[\{\[\"\'\w])/gi, ''));
+  }
 }
 
 export class Pubnub extends Common {
